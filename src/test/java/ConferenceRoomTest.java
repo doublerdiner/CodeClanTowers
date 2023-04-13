@@ -36,6 +36,6 @@ public class ConferenceRoomTest {
     }
     @Test
     public void conferenceRoomArea(){
-        assertEquals(20, Room.calculateRoomSize(5,4), 0.01);
+        assertEquals(20, ConferenceRoom.calculateRoomSize(5,4), 0.01);
     }
 }

@@ -50,6 +50,6 @@ public class BedroomTest {
     }
     @Test
     public void bedroomArea(){
-        assertEquals(15, Room.calculateRoomSize(3,5), 0.01);
+        assertEquals(15, Bedroom.calculateRoomSize(3,5), 0.01);
     }
 }

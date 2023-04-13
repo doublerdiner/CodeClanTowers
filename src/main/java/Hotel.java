@@ -25,7 +25,7 @@ public class Hotel {
         diningRooms.put(diningRoom1.getName(), diningRoom1);
         diningRooms.put(diningRoom2.getName(), diningRoom2);
     }
-
+//GETTERS
     public String getName() {
         return name;
     }
@@ -38,9 +38,15 @@ public class Hotel {
         return conferenceRooms;
     }
 
+    public HashMap<String, DiningRoom> getDiningRooms() {
+        return diningRooms;
+    }
+
     public ArrayList<Guest> getBookingList() {
         return bookingList;
     }
+
+//    Other Methods
 
     public void addGuestToBookingList(Guest guest) {
         this.bookingList.add(guest);
@@ -64,10 +70,6 @@ public class Hotel {
 
     public Booking bookRoom(Bedroom bedroom, int nights){
         return new Booking(bedroom, nights);
-    }
-
-    public HashMap<String, DiningRoom> getDiningRooms() {
-        return diningRooms;
     }
 
     public ArrayList<Bedroom> getEmptyRooms(){
