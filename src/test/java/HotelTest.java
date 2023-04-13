@@ -49,5 +49,19 @@ public class HotelTest {
         hotel.removeGuestFromRoom(hotel.getConferenceRooms().get(0), guest);
         assertEquals(1, hotel.getConferenceRooms().get(0).getGuests().size());
     }
+    @Test
+    public void roomCanBeBooked(){
+        Bedroom room1 = hotel.getBedrooms().get(0);
+        Booking booking = hotel.bookRoom(room1, 15);
+        assertEquals("Single", booking.getBedroom().getRoomType().getFormattedName());
+        assertEquals(1, booking.getBedroom().getCapacity());
+        assertEquals(15, booking.getNumberOfNightsBooked());
+    }
+
+    @Test
+    public void hotelHasDiningRooms(){
+        assertEquals(2, hotel.getDiningRooms().size());
+        assertEquals(true, hotel.getDiningRooms().containsKey("Pizza Planet"));
+    }
 
 }

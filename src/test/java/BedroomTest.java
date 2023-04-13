@@ -13,7 +13,7 @@ public class BedroomTest {
     @Before
     public void setup(){
         guest = new Guest("Dan");
-        bedroom = new Bedroom(1, RoomType.SINGLE);
+        bedroom = new Bedroom(1, RoomType.SINGLE, 120);
     }
 
     @Test
@@ -42,5 +42,10 @@ public class BedroomTest {
     @Test
     public void  bedroomHasRoomNumber(){
         assertEquals(1, bedroom.getRoomNumber());
+    }
+
+    @Test
+    public void bedroomHasRate(){
+        assertEquals(120, bedroom.getRate(), 0.01);
     }
 }
