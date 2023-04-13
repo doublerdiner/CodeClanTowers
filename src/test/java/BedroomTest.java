@@ -48,4 +48,8 @@ public class BedroomTest {
     public void bedroomHasRate(){
         assertEquals(120, bedroom.getRate(), 0.01);
     }
+    @Test
+    public void bedroomArea(){
+        assertEquals(15, Room.calculateRoomSize(3,5), 0.01);
+    }
 }

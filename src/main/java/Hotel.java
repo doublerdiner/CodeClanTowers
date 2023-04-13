@@ -5,6 +5,7 @@ public class Hotel {
     private String name;
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<ConferenceRoom> conferenceRooms;
+    private ArrayList<Guest> bookingList;
     private HashMap<String, DiningRoom> diningRooms;
     private DiningRoom diningRoom1 = new DiningRoom(30, "Pizza Planet");
     private DiningRoom diningRoom2 = new DiningRoom(100, "The Black Olive");
@@ -14,6 +15,7 @@ public class Hotel {
         this.bedrooms = new ArrayList<>();
         this.conferenceRooms = new ArrayList<>();
         this.diningRooms = new HashMap<>();
+        this.bookingList = new ArrayList<>();
         bedrooms.add(new Bedroom(1, RoomType.SINGLE, 120));
         bedrooms.add(new Bedroom(2, RoomType.DOUBLE, 180));
         bedrooms.add(new Bedroom(3, RoomType.TWIN, 200));
@@ -36,12 +38,28 @@ public class Hotel {
         return conferenceRooms;
     }
 
-    public void addGuestToRoom(Room room, Guest guest){
-        room.addGuest(guest);
+    public ArrayList<Guest> getBookingList() {
+        return bookingList;
     }
 
-    public void removeGuestFromRoom(Room room, Guest guest){
-        room.removeGuest(guest);
+    public void addGuestToBookingList(Guest guest) {
+        this.bookingList.add(guest);
+    }
+
+    public void clearBookingList(){
+        this.bookingList.clear();
+    }
+    public void addGuestsToRoom(Room room){
+        if(room.getCapacity() >= this.bookingList.size() && room.getGuests().size() == 0) {
+            for(Guest guest : this.bookingList) {
+                room.addGuest(guest);
+            }
+        }
+        this.bookingList.clear();
+    }
+
+    public void removeGuestsFromRoom(Room room){
+        room.getGuests().clear();
     }
 
     public Booking bookRoom(Bedroom bedroom, int nights){
@@ -50,5 +68,15 @@ public class Hotel {
 
     public HashMap<String, DiningRoom> getDiningRooms() {
         return diningRooms;
+    }
+
+    public ArrayList<Bedroom> getEmptyRooms(){
+        ArrayList<Bedroom> answer = new ArrayList<>();
+        for(Bedroom bedroom : this.getBedrooms()){
+            if(bedroom.getGuests().size() == 0) {
+                answer.add(bedroom);
+            }
+        }
+        return answer;
     }
 }

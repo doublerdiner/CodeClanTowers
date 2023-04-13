@@ -25,4 +25,9 @@ public abstract class Room {
     public void removeGuest(Guest guest){
         this.guests.remove(guest);
     };
+
+    static double calculateRoomSize(double length, double width){
+        return length * width;
+    }
+
 }

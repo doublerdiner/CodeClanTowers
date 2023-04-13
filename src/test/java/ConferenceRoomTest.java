@@ -34,4 +34,8 @@ public class ConferenceRoomTest {
         conferenceRoom.removeGuest(guest);
         assertEquals(1, conferenceRoom.getGuests().size());
     }
+    @Test
+    public void conferenceRoomArea(){
+        assertEquals(20, Room.calculateRoomSize(5,4), 0.01);
+    }
 }

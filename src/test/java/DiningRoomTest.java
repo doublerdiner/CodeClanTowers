@@ -39,5 +39,9 @@ public class DiningRoomTest {
         assertEquals(1, diningRoom.getGuests().size());
     }
 
+    @Test
+    public void diningRoomArea(){
+        assertEquals(25, Room.calculateRoomSize(5,5), 0.01);
+    }
 
 }
